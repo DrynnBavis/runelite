@@ -35,10 +35,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Client;
-import net.runelite.api.Quest;
-import net.runelite.api.ScriptID;
-import net.runelite.api.Skill;
+import net.runelite.api.*;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.dbtable.DBTableID;
 import net.runelite.api.events.ClientTick;
@@ -542,6 +539,27 @@ public class WorldMapPlugin extends Plugin
 					.forEach(worldMapPointManager::add)
 			);
 		}
+	}
+
+	public TeleportLocationData GetClosestTeleport(WorldPoint target)
+	{
+		TeleportLocationData closestTeleport = null;
+		int distance = 0;
+		int shortest_distance = Integer.MAX_VALUE;
+
+		// naively iterate over the entire list of TPs
+		for (TeleportLocationData tp : TeleportLocationData.values())
+		{
+			// TODO: account for 2-step teleports
+			// e.g. 1. fremenik boots -> 2. boat to vorkath
+			distance = target.distanceTo(tp.getLocation());
+			if (distance < shortest_distance)
+			{
+				shortest_distance = distance;
+				closestTeleport = tp;
+			}
+		}
+		return closestTeleport;
 	}
 
 	private void updateQuestStartPointIcons()
