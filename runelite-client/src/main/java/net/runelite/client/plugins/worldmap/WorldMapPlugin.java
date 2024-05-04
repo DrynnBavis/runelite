@@ -541,27 +541,6 @@ public class WorldMapPlugin extends Plugin
 		}
 	}
 
-	public TeleportLocationData GetClosestTeleport(WorldPoint target)
-	{
-		TeleportLocationData closestTeleport = null;
-		int distance = 0;
-		int shortest_distance = Integer.MAX_VALUE;
-
-		// naively iterate over the entire list of TPs
-		for (TeleportLocationData tp : TeleportLocationData.values())
-		{
-			// TODO: account for 2-step teleports
-			// e.g. 1. fremenik boots -> 2. boat to vorkath
-			distance = target.distanceTo(tp.getLocation());
-			if (distance < shortest_distance)
-			{
-				shortest_distance = distance;
-				closestTeleport = tp;
-			}
-		}
-		return closestTeleport;
-	}
-
 	private void updateQuestStartPointIcons()
 	{
 		worldMapPointManager.removeIf(isType(MapPoint.Type.QUEST));

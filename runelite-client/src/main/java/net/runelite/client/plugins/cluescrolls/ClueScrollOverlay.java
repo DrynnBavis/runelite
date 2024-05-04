@@ -144,6 +144,16 @@ public class ClueScrollOverlay extends OverlayPanel
 				.build());
 		}
 
+		if (clue.getClosestTeleport() != null)
+		{
+			panelComponent.getChildren().add(LineComponent.builder().left("").build());
+			panelComponent.getChildren().add(LineComponent.builder()
+				.left(clue.getClosestTeleport().getTooltip())
+				.leftColor(Color.GREEN)
+				.build());
+		}
+
+
 		return super.render(graphics);
 	}
 }

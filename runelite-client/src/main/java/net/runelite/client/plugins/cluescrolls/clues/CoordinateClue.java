@@ -44,6 +44,8 @@ import static net.runelite.client.plugins.cluescrolls.clues.Enemy.BANDOSIAN_GUAR
 import static net.runelite.client.plugins.cluescrolls.clues.Enemy.BRASSICAN_MAGE;
 import static net.runelite.client.plugins.cluescrolls.clues.Enemy.SARADOMIN_WIZARD;
 import static net.runelite.client.plugins.cluescrolls.clues.Enemy.ZAMORAK_WIZARD;
+
+import net.runelite.client.plugins.worldmap.TeleportLocationData;
 import net.runelite.client.ui.overlay.OverlayUtil;
 import net.runelite.client.ui.overlay.components.LineComponent;
 import net.runelite.client.ui.overlay.components.PanelComponent;
@@ -60,6 +62,7 @@ public class CoordinateClue extends ClueScroll implements LocationClueScroll
 		@Getter(onMethod_ = {@Varbit})
 		private final int lightSourceVarbitId;
 		private final Enemy enemy;
+		private final TeleportLocationData closestLocation = null;
 
 		private CoordinateClueInfo(@NonNull String directions)
 		{
@@ -275,6 +278,7 @@ public class CoordinateClue extends ClueScroll implements LocationClueScroll
 			setEnemy(clueInfo.getEnemy());
 		}
 		setRequiresSpade(true);
+		setClosestTeleport(TeleportLocationData.getClosestTeleport(location));
 	}
 
 	@Override
