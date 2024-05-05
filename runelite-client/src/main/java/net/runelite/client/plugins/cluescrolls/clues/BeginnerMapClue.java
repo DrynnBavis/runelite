@@ -28,6 +28,7 @@ import com.google.common.collect.ImmutableList;
 import lombok.Getter;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.widgets.InterfaceID;
+import net.runelite.client.plugins.worldmap.TeleportLocationData;
 
 @Getter
 public class BeginnerMapClue extends MapClue implements LocationClueScroll
@@ -47,6 +48,7 @@ public class BeginnerMapClue extends MapClue implements LocationClueScroll
 		super(-1, location, description);
 		this.widgetGroupID = widgetGroupID;
 		setRequiresSpade(true);
+		setClosestTeleport(TeleportLocationData.getClosestTeleport(location));
 	}
 
 	// Beginner Map Clues all use the same ItemID, but the WidgetID used to display them is unique

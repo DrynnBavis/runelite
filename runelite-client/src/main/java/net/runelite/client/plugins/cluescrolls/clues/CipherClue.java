@@ -39,6 +39,8 @@ import net.runelite.api.coords.WorldPoint;
 import static net.runelite.client.plugins.cluescrolls.ClueScrollOverlay.TITLED_CONTENT_COLOR;
 import net.runelite.client.plugins.cluescrolls.ClueScrollPlugin;
 import static net.runelite.client.plugins.cluescrolls.ClueScrollWorldOverlay.IMAGE_Z_OFFSET;
+
+import net.runelite.client.plugins.worldmap.TeleportLocationData;
 import net.runelite.client.ui.overlay.OverlayUtil;
 import net.runelite.client.ui.overlay.components.LineComponent;
 import net.runelite.client.ui.overlay.components.PanelComponent;
@@ -82,6 +84,7 @@ public class CipherClue extends ClueScroll implements NpcClueScroll, LocationClu
 		this.text = "The cipher reveals where to dig next: " + text;
 		this.npcId = -1;
 		this.location = location;
+		setClosestTeleport(TeleportLocationData.getClosestTeleport(location));
 		this.area = area;
 		this.question = null;
 		this.answer = null;

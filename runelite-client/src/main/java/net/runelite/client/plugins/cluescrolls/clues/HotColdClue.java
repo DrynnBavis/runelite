@@ -47,6 +47,7 @@ import net.runelite.client.plugins.cluescrolls.clues.hotcold.HotColdLocation;
 import net.runelite.client.plugins.cluescrolls.clues.hotcold.HotColdSolver;
 import net.runelite.client.plugins.cluescrolls.clues.hotcold.HotColdTemperature;
 import net.runelite.client.plugins.cluescrolls.clues.hotcold.HotColdTemperatureChange;
+import net.runelite.client.plugins.worldmap.TeleportLocationData;
 import net.runelite.client.ui.overlay.OverlayUtil;
 import net.runelite.client.ui.overlay.components.LineComponent;
 import net.runelite.client.ui.overlay.components.PanelComponent;
@@ -100,6 +101,7 @@ public class HotColdClue extends ClueScroll implements LocationClueScroll, Locat
 		this.npcLocation = npcLocation;
 		this.isBeginner = isBeginner;
 		setRequiresSpade(true);
+		setClosestTeleport(TeleportLocationData.getClosestTeleport(npcLocation));
 	}
 
 	@Override

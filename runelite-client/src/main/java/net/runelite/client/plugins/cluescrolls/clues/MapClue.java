@@ -45,6 +45,8 @@ import static net.runelite.client.plugins.cluescrolls.ClueScrollWorldOverlay.CLI
 import static net.runelite.client.plugins.cluescrolls.ClueScrollWorldOverlay.CLICKBOX_FILL_COLOR;
 import static net.runelite.client.plugins.cluescrolls.ClueScrollWorldOverlay.CLICKBOX_HOVER_BORDER_COLOR;
 import static net.runelite.client.plugins.cluescrolls.ClueScrollWorldOverlay.IMAGE_Z_OFFSET;
+
+import net.runelite.client.plugins.worldmap.TeleportLocationData;
 import net.runelite.client.ui.overlay.OverlayUtil;
 import net.runelite.client.ui.overlay.components.LineComponent;
 import net.runelite.client.ui.overlay.components.PanelComponent;
@@ -118,6 +120,7 @@ public class MapClue extends ClueScroll implements ObjectClueScroll
 		this.objectId = objectId;
 		this.description = description;
 		setRequiresSpade(objectId == -1);
+		setClosestTeleport(TeleportLocationData.getClosestTeleport(location));
 	}
 
 	@Override

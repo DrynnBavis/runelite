@@ -50,6 +50,8 @@ import static net.runelite.client.plugins.cluescrolls.ClueScrollWorldOverlay.CLI
 import static net.runelite.client.plugins.cluescrolls.ClueScrollWorldOverlay.CLICKBOX_FILL_COLOR;
 import static net.runelite.client.plugins.cluescrolls.ClueScrollWorldOverlay.CLICKBOX_HOVER_BORDER_COLOR;
 import static net.runelite.client.plugins.cluescrolls.ClueScrollWorldOverlay.IMAGE_Z_OFFSET;
+
+import net.runelite.client.plugins.worldmap.TeleportLocationData;
 import net.runelite.client.ui.overlay.OverlayUtil;
 import net.runelite.client.ui.overlay.components.LineComponent;
 import net.runelite.client.ui.overlay.components.PanelComponent;
@@ -1749,6 +1751,7 @@ public class CrypticClue extends ClueScroll implements NpcClueScroll, ObjectClue
 		this.npcRegions = npcRegions;
 		setRequiresSpade(this.locationProvider != null && npc == null && this.objectId == -1);
 		setRequiresLight(requiresLight);
+		setClosestTeleport(TeleportLocationData.getClosestTeleport(location));
 	}
 
 	@Nullable

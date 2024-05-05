@@ -74,6 +74,7 @@ import static net.runelite.client.plugins.cluescrolls.clues.item.ItemRequirement
 import static net.runelite.client.plugins.cluescrolls.clues.item.ItemRequirements.item;
 import static net.runelite.client.plugins.cluescrolls.clues.item.ItemRequirements.range;
 import net.runelite.client.plugins.cluescrolls.clues.item.SingleItemRequirement;
+import net.runelite.client.plugins.worldmap.TeleportLocationData;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayUtil;
 import net.runelite.client.ui.overlay.components.LineComponent;
@@ -268,6 +269,7 @@ public class EmoteClue extends ClueScroll implements LocationClueScroll
 		this.firstEmote = firstEmote;
 		this.secondEmote = secondEmote;
 		this.itemRequirements = itemRequirements;
+		setClosestTeleport(TeleportLocationData.getClosestTeleport(location));
 	}
 
 	private EmoteClue(String text, String locationName, @Nullable STASHUnit stashUnit, WorldPoint location, Emote firstEmote, Emote secondEmote, @Varbit int firePitVarbitId, @Nonnull ItemRequirement... itemRequirements)
