@@ -91,6 +91,9 @@ public class ClueScrollOverlay extends OverlayPanel
 	private final Client client;
 
 	@Inject
+	private ClueScrollConfig config;
+
+	@Inject
 	private ClueScrollOverlay(ClueScrollPlugin plugin, Client client)
 	{
 		super(plugin);
@@ -144,7 +147,7 @@ public class ClueScrollOverlay extends OverlayPanel
 				.build());
 		}
 
-		if (clue.getClosestTeleport() != null)
+		if (config.displayClosestTeleport() && clue.getClosestTeleport() != null)
 		{
 			panelComponent.getChildren().add(LineComponent.builder().left("").build());
 			panelComponent.getChildren().add(LineComponent.builder()

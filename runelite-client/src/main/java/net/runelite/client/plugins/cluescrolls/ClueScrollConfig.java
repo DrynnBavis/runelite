@@ -42,4 +42,11 @@ public interface ClueScrollConfig extends Config
 	{
 		return true;
 	}
+
+	@ConfigItem(
+			keyName = "displayClosestTeleport",
+			name = "Display hint for closest teleport",
+			description = "Configures whether or not to display hint with closest teleport when available"
+	)
+	default boolean displayClosestTeleport() { return true; }
 }
